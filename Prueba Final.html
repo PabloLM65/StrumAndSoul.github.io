@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strum & Soul - Descubre el sonido de tu alma</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Variables de Colores */
+        :root {
+            --deep-dark-blue: #0A0F21;
+            --smoke-gray: #4A4E69;
+            --wine-red: #8D0801;
+            --soft-ivory: #F4F1DE;
+            --gold: #FFD700;
+            --charcoal-black: #121212;
+        }
+
+        /* Estilos Generales */
+        body {
+            font-family: 'Lora', serif; /* Usando Lora como sustituto para Libertinus Math */
+            margin: 0;
+            padding: 0;
+            background-color: var(--soft-ivory);
+            color: var(--charcoal-black);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Bebas Neue', sans-serif;
+            color: var(--deep-dark-blue);
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 1em;
+            color: var(--wine-red);
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        a {
+            color: var(--wine-red);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--gold);
+        }
+
+        /* Header y Navegación */
+        header {
+            background-color: var(--deep-dark-blue);
+            color: var(--soft-ivory);
+            padding: 1em 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav #brand-name {
+            margin: 0;
+            font-size: 3em;
+            letter-spacing: 2px;
+        }
+
+        nav #slogan {
+            margin-top: 5px;
+            font-size: 1.2em;
+            font-style: italic;
+            color: var(--soft-ivory);
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap; /* Para responsive básico */
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: var(--soft-ivory);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3em;
+            padding: 5px 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--wine-red);
+            color: var(--soft-ivory);
+            border-radius: 5px;
+        }
+
+        /* Secciones de Contenido */
+        .content-section {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Hero Section */
+        #hero {
+            background-image: linear-gradient(rgba(10, 15, 33, 0.7), rgba(10, 15, 33, 0.7)), url('https://via.placeholder.com/1500x600?text=Fondo+Musical'); /* Imagen de fondo sugestiva */
+            background-size: cover;
+            background-position: center;
+            color: var(--soft-ivory);
+            text-align: center;
+            padding: 80px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        #hero h2 {
+            font-size: 3.5em;
+            margin-bottom: 0.3em;
+            color: var(--gold);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+        }
+
+        #hero p {
+            font-size: 1.3em;
+            margin-bottom: 1.5em;
+            color: var(--soft-ivory);
+        }
+
+        #cta-button {
+            background-color: var(--wine-red);
+            color: var(--soft-ivory);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        #cta-button:hover {
+            background-color: var(--gold);
+            color: var(--deep-dark-blue);
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        /* Products Section & Sub-sections */
+        .product-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background-color: var(--smoke-gray);
+            color: var(--soft-ivory);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        .product-card h3 {
+            color: var(--gold);
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+
+        .product-card .price {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: var(--soft-ivory);
+            margin-top: 10px;
+        }
+
+        /* Carousel */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            margin-top: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            background-color: var(--deep-dark-blue);
+            padding: 10px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-track img {
+            width: 100%; /* Ocupa el ancho completo del contenedor en cada "slide" */
+            flex-shrink: 0; /* Evita que las imágenes se encojan */
+            height: 300px; /* Altura fija para el ejemplo */
+            object-fit: contain; /* Ajusta la imagen sin recortar */
+            background-color: var(--charcoal-black);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.5);
+            color: var(--soft-ivory);
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 1.5em;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-button:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .carousel-button.prev {
+            left: 10px;
+        }
+
+        .carousel-button.next {
+            right: 10px;
+        }
+
+        /* Video Section */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            background-color: var(--charcoal-black);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Footer (Nav Inferior) */
+        footer {
+            background-color: var(--charcoal-black);
+            color: var(--smoke-gray);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            font-size: 0.9em;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin: 15px;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .footer-section p, .footer-section a {
+            color: var(--smoke-gray);
+            margin-bottom: 5px;
+            font-size: 0.95em;
+            display: block; /* Para que cada enlace o párrafo ocupe su propia línea */
+        }
+
+        .footer-section a:hover {
+            color: var(--soft-ivory);
+        }
+
+        .social-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social-links li {
+            margin: 0;
+        }
+
+        .social-links img {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+            filter: grayscale(100%) brightness(150%); /* Hace los iconos grises y más visibles en fondo oscuro */
+            transition: filter 0.3s ease;
+        }
+
+        .social-links img:hover {
+            filter: grayscale(0%) brightness(100%); /* Color original al pasar el ratón */
+        }
+
+        .map-container-footer {
+            width: 100%;
+            height: 200px; /* Altura más pequeña para el footer */
+            border: 1px solid var(--smoke-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .map-container-footer iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .copyright {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(74, 78, 105, 0.3); /* Un separador sutil */
+            color: var(--smoke-gray);
+        }
+
+
+        /* Responsive Básico */
+        @media (min-width: 768px) {
+            nav {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .nav-links {
+                margin-top: 0;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-content {
+                justify-content: space-around;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            #hero h2 {
+                font-size: 2.5em;
+            }
+
+            #hero p {
+                font-size: 1em;
+            }
+
+            .product-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-section {
+                text-align: center;
+                width: 100%; /* Ocupa todo el ancho en móviles */
+            }
+            .social-links {
+                justify-content: center; /* Centra los iconos en móviles */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="https://images.vexels.com/media/users/3/184030/isolated/preview/affd84e090546e2a2b028d8ae37914ae-trazo-degradado-de-guitarra-acustica.png" width="150" height="150">
+            <h1 id="brand-name">Strum & Soul</h1>
+            <p id="slogan">Descubre el sonido de tu alma</p>
+            <ul class="nav-links">
+                <li><a href="#about">Sobre Nosotros</a></li>
+                <li><a href="#products">Productos</a></li>
+                <li><a href="#video-section">Inspírate</a></li>
+                <li><a href="#contact-footer">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h2>Tu música empieza aquí</h2>
+                <p>En Strum & Soul, creemos que cada instrumento tiene una historia que contar, y cada alma una melodía que expresar. Encuentra el instrumento perfecto que resuene contigo.</p>
+                <button id="cta-button">Explora Nuestros Instrumentos</button>
+            </div>
+        </section>
+
+        <section id="about" class="content-section">
+            <h2>Sobre Nosotros</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Strum & Soul es más que una tienda de música; es un santuario para aquellos que buscan conectar con el arte a través del sonido. Ofrecemos una selección curada de guitarras, bajos, baterías y accesorios de alta calidad, tanto para principiantes como para músicos experimentados.</p>
+                    <p>Nuestra pasión es ayudarte a encontrar ese instrumento especial que no solo suene bien, sino que también se sienta como una extensión de ti mismo. Con un equipo de expertos y un ambiente acogedor, estamos aquí para guiarte en tu viaje musical.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://image.cdn2.seaart.me/2025-07-24/d20n815e878c73864sfg-3/4fb126b3e6bed2e67134e49929c09c94_high.webp" width="300" height="200" alt="Guitarra clásica en un ambiente cálido">
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="content-section">
+            <h2>Nuestros Productos</h2>
+
+            <h3>Guitarras</h3>
+            <div class="product-gallery">
+                <div class="product-card">
+                    <img src="https://www.casainstrumental.com/wp-content/uploads/2025/05/71fh2zh24L._AC_SL1500_.jpg" width="200" height="400">
+                    <h3>GUITARRA ELECTROACUSTICA OSCAR SCHMIDT OG2CEFBC-A-U"</h3>
+                    <p class="price">Q 1,700.00</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://www.casainstrumental.com/wp-content/uploads/2025/05/L72578000001000-02-2000x2000-1-800x800-1-1-600x600-1.webp" width="200" height="400">
+                    <h3>GUITARRA ELECTRICA PERSONALIZADA EPIPHONE LES PAUL BLANCO ALPINO EILCAWGH1"</h3>
+                    <p class="price">Q 9,618.00</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://www.casainstrumental.com/wp-content/uploads/2024/03/EIES335CHNH1.png" width="200" height="400">
+                    <h3>GUITARRA ELECTRICA EPIPHONE ES-335 EIES335CHNH1"</h3>
+                    <p class="price">Q 8,159.00</p>
+                </div>
+            </div>
+
+            <h3>Bajos</h3>
+            <div class="product-gallery">
+                <div class="product-card">
+                    <img src="https://www.casainstrumental.com/wp-content/uploads/2022/10/378652505.png" width="300" height="500">
+                    <h3>BAJO SQUIER AFFINITY JAZZ BASS V 378652505"</h3>
+                    <p class="price">Q Q4,195.00</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://www.casainstrumental.com/wp-content/uploads/2022/10/OB100N-A-U.png" width="300" height="500">
+                    <h3>BAJO ELECTROACUSTICO OSCAR SCHMIDT OB100N-A-U"</h3>
+                    <p class="price">Q Q3,440.00</p>
+                </div>
+            </div>
+
+            <h3>Baterías y Percusión</h3>
+            <div class="product-gallery">
+                <div class="product-card">
+                    <img src="https://www.domisolmusic.com/wp-content/uploads/2025/07/BATERIA-TAMA-STAGESTAR-ST62H6C-CSS-1.webp" width="320" height="500">
+                    <h3>BATERIA TAMA STAGESTAR ST62H6C CSS"</h3>
+                    <p class="price">Q 8,500.00</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://www.domisolmusic.com/wp-content/uploads/2023/12/MPNMP4350CNL--jpg.webp" width="320" height="500">
+                    <h3>REDOBLANTE MAPEX MPNMP4350CNL"</h3>
+                    <p class="price">Q 1,500.00</p>
+                </div>
+            </div>
+
+            <h3>Accesorios de Guitarra</h3>
+            <div class="product-gallery">
+                <div class="product-card">
+                    <img src="https://www.casainstrumental.com/wp-content/uploads/2023/06/P02720.png" width="200" height="400">
+                    <h3>CUERDAS PARA GUITARRA ELECTRICA ERNIE BALL SLINKY COBALT P02720</h3>
+                    <p class="price">Q 135.00</p>
+                </div>
+                <div class="product-card">
+                <img src="https://www.casainstrumental.com/wp-content/uploads/2022/03/P09602.jpg" width="200" height="400">
+                    <h3>CAPODASTRO ERNIE BALL AXIS CAPO P09602</h3>
+                    <p class="price">Q 180.00</p>
+                </div>
+                <div class="product-card">
+                <img src="https://www.casainstrumental.com/wp-content/uploads/2020/07/TU10BK-1.jpg" width="200" height="400">
+                    <h3>AFINADOR CROMATICO ESTILO CLIP P/GUITARRA/BAJO ELECTRICO BOSS TU-10-BK</h3>
+                    <p class="price">Q 90.00</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://www.casainstrumental.com/wp-content/uploads/2023/07/1980351050.png" width="200" height="400">
+                    <h3>PAQUETE DE PUAS FENDER SERIE GEORGE HARRISON 1980351050</h3>
+                    <p class="price">Q 45.00</p>
+                </div>
+            </div>
+
+            <h3>Amplificadores</h3>
+            <div class="product-gallery">
+                <div class="product-card">
+                    <img src="https://www.casainstrumental.com/wp-content/uploads/2022/10/ORI50C-U.jpg" width="200" height="300">
+                    <h3>AMPLIFICADOR DE 50W MARSHALL ORI50C-U</h3>
+                    <p class="price">Q 9,400.00</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://www.casainstrumental.com/wp-content/uploads/2024/03/Fotos-para-web.png" width="200" height="300">
+                    <h3>AMPLIFICADOR PARA BAJO, BOSS KATANA-210 KTN210B</h3>
+                    <p class="price">Q 6,700.00</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://www.casainstrumental.com/wp-content/uploads/2022/09/Roland-KC-200.png" width="200" height="300">
+                    <h3>AMPLIFICADOR PARA TECLADO, ROLAND KC-200</h3>
+                    <p class="price">Q Q4,700.00</p>
+                </div>
+            </div>
+
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <img src="https://i.multisononline.com/img/cms/_promusica/fender-performance-oferta.jpg" alt="Guitarra Acústica">
+                    <img src="https://i.multisononline.com/img/cms/_promusica/fender-performance-oferta.jpg" alt="Bajo Eléctrico">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFtQ2Qtvjt7HLSx2CBESR5DWtI3-e3NBYuQ&s" alt="Amplificador">
+                    <img src="https://via.placeholder.com/300x200?text=Bateria+Electronica+2" alt="Batería Electrónica">
+                    <img src="https://via.placeholder.com/300x200?text=Accesorios+Guitarra+2" alt="Accesorios de Guitarra">
+                </div>
+                <button class="carousel-button prev">❮</button>
+                <button class="carousel-button next">❯</button>
+            </div>
+        </section>
+
+        <section id="video-section" class="content-section">
+            <h2>Inspírate con Nuestro Video</h2>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/tPZRdUnV2vg?si=HYstH6dJFSmf2ueG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contáctanos</h4>
+                <p><strong>Dirección:</strong> Centro Comercial Punto Roosevelt, segundo nivel, locales 36, 73 y 74, Calzada Roosevelt 13-70 01007, Cdad. de Guatemala</p>
+                <p><strong>Teléfono:</strong> <a href="tel:+50245170008">+502 4517-0008</a></p>
+                <p><strong>Email:</strong> <a href="mailto:info@strumandsoul.com">info@strumandsoul.com</a></p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Síguenos</h4>
+                <ul class="social-links">
+                    <li><a href="#" target="_blank" aria-label="Facebook"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/1024px-2021_Facebook_icon.svg.png" alt="Facebook"></a></li>
+                    <li><a href="#" target="_blank" aria-label="Instagram"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1024px-Instagram_logo_2016.svg.png" alt="Instagram"></a></li>
+                    <li><a href="#" target="_blank" aria-label="Twitter"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/1200px-X_logo_2023.svg.png" alt="Twitter/X"></a></li>
+                    <li><a href="#" target="_blank" aria-label="YouTube"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1024px-YouTube_full-color_icon_%282017%29.svg.png" alt="YouTube"></a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Nuestra Ubicación</h4>
+                <div class="map-container-footer">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61762.056607900995!2d-90.60469439559758!3d14.648644069695145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8589a1bb309ca877%3A0xd1bfc31d5c60601c!2sDo%20Mi%20Sol%20%E2%80%A2%20Punto%20Roosevelt!5e0!3m2!1ses-419!2sgt!4v1753315703853!5m2!1ses-419!2sgt" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Strum & Soul. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Funcionalidad 1: Desplazamiento Suave al Hacer Clic en los Enlaces de Navegación ---
+            document.querySelectorAll('.nav-links a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault(); // Evita el comportamiento de anclaje predeterminado
+
+                    const targetId = this.getAttribute('href').substring(1); // Obtiene el ID de la sección
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        // Ajusta para la altura del header fijo si existe (offsetHeight o 0 si no hay header o no tiene altura)
+                        const headerHeight = document.querySelector('header') ? document.querySelector('header').offsetHeight : 0;
+                        window.scrollTo({
+                            top: targetElement.offsetTop - headerHeight,
+                            behavior: 'smooth' // Desplazamiento suave
+                        });
+                    }
+                });
+            });
+
+            // --- Funcionalidad 2: Carrusel de Imágenes ---
+            const carouselTrack = document.querySelector('.carousel-track');
+            const carouselImages = Array.from(carouselTrack.children);
+            const prevButton = document.querySelector('.carousel-button.prev');
+            const nextButton = document.querySelector('.carousel-button.next');
+            let currentIndex = 0;
+
+            // Función para actualizar el ancho de la imagen y la posición del carrusel en caso de redimensionamiento
+            const updateCarouselDisplay = () => {
+                if (carouselImages.length > 0) {
+                    // Establece el ancho de cada imagen para que ocupe el 100% del contenedor visible del carrusel
+                    const containerWidth = carouselTrack.parentElement.offsetWidth;
+                    carouselImages.forEach(img => {
+                        img.style.width = containerWidth + 'px';
+                    });
+                    // Mueve a la posición actual para asegurar que esté alineado con el nuevo ancho
+                    moveToSlide(currentIndex);
+                }
+            };
+
+            // Ajusta el ancho inicial de las imágenes del carrusel
+            updateCarouselDisplay();
+
+            // Event listener para redimensionamiento de ventana
+            window.addEventListener('resize', updateCarouselDisplay);
+
+            // Mueve el carrusel a un índice específico
+            const moveToSlide = (index) => {
+                const containerWidth = carouselTrack.parentElement.offsetWidth;
+                carouselTrack.style.transform = 'translateX(-' + index * containerWidth + 'px)';
+            };
+
+            // Listener para el botón siguiente
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % carouselImages.length; // Ciclo
+                moveToSlide(currentIndex);
+            });
+
+            // Listener para el botón anterior
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length; // Ciclo (asegura que el índice no sea negativo)
+                moveToSlide(currentIndex);
+            });
+
+            // --- Funcionalidad 3 (Opcional/Extra): Llamada a la Acción "Explora Nuestros Instrumentos" ---
+            // Este botón se desplaza a la sección de productos
+            const ctaButton = document.getElementById('cta-button');
+            ctaButton.addEventListener('click', () => {
+                const productsSection = document.getElementById('products');
+                if (productsSection) {
+                    const headerHeight = document.querySelector('header') ? document.querySelector('header').offsetHeight : 0;
+                    window.scrollTo({
+                        top: productsSection.offsetTop - headerHeight,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
